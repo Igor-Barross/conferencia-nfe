@@ -1,0 +1,11 @@
+# Ambiente virtual e caches
+.env/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+notebooks/
+
+# Arquivos temporários do Excel
+~$*
