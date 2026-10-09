@@ -4,7 +4,7 @@ Script em Python que confere se as **notas fiscais emitidas** (NF-e) por uma emp
 
 ![Python](https://img.shields.io/badge/Python-3.13-3776AB?logo=python&logoColor=white)
 ![pandas](https://img.shields.io/badge/pandas-3.x-150458?logo=pandas&logoColor=white)
-![Testes](https://img.shields.io/badge/testes-32%20passando-brightgreen)
+![Testes](<https://img.shields.io/badge/testes-32%20passando-brightgreen>)
 
 ---
 
@@ -34,10 +34,10 @@ Quando uma loja compra de um fornecedor, o fornecedor emite uma NF-e e a loja pr
 
 Os dados vêm de duas fontes que não conversam entre si:
 
-| Fonte | Formato | O que traz |
-|---|---|---|
-| Relatório de **notas emitidas** | `.xlsx` | Todas as notas emitidas pelo fornecedor, com chave de acesso e status |
-| Relatório de **entrada do sistema da loja** | `.xls` (legado) | Notas efetivamente lançadas no sistema, com data de entrada e valor |
+| Fonte                                             | Formato           | O que traz                                                            |
+| ------------------------------------------------- | ----------------- | --------------------------------------------------------------------- |
+| Relatório de**notas emitidas**             | `.xlsx`         | Todas as notas emitidas pelo fornecedor, com chave de acesso e status |
+| Relatório de**entrada do sistema da loja** | `.xls` (legado) | Notas efetivamente lançadas no sistema, com data de entrada e valor  |
 
 ## Objetivo
 
@@ -75,7 +75,7 @@ flowchart LR
 
 **Antes** (arquivo bruto, como vem da origem):
 
-<img src="docs/img/01-emitidas-raw.png" alt="Relatório de notas emitidas, bruto" width="100%">
+<img alt="Relatório de notas emitidas, bruto" src="/01-emitidas-raw.png" width="100%">
 
 **Depois** (colunas renomeadas, datas e valores convertidos, ordenado por data):
 
@@ -156,7 +156,7 @@ Cada módulo tem uma responsabilidade: `config` guarda caminhos, `formatacao_arq
 
 ```bash
 # 1. Clone o repositório
-git clone <url-do-repositorio>
+git clone https://github.com/Igor-Barross/conferencia-nfe
 cd script-conferencia-nf
 
 # 2. Crie e ative um ambiente virtual
@@ -188,11 +188,11 @@ pytest
 
 São **32 testes** cobrindo os casos que mais costumam dar errado:
 
-| Módulo | O que é testado |
-|---|---|
-| `cruzamento` | nota conciliada e pendente, nota cancelada ignorada, mesmo número com data diferente, diferença de R$ 0,01 dentro da tolerância, valor divergente, duplicidade na chave, valor em texto, valor que não converte |
-| `formatacao_arquivo` | valores no formato brasileiro (`33.720,00`, `241,73`, `R$ 820,00`), valor vazio, número da nota com texto, datas inválidas, ordem dia/mês, DataFrame original preservado |
-| `utils` | formatação de moeda em reais |
+| Módulo                | O que é testado                                                                                                                                                                                                    |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `cruzamento`         | nota conciliada e pendente, nota cancelada ignorada, mesmo número com data diferente, diferença de R$ 0,01 dentro da tolerância, valor divergente, duplicidade na chave, valor em texto, valor que não converte |
+| `formatacao_arquivo` | valores no formato brasileiro (`33.720,00`, `241,73`, `R$ 820,00`), valor vazio, número da nota com texto, datas inválidas, ordem dia/mês, DataFrame original preservado                                   |
+| `utils`              | formatação de moeda em reais                                                                                                                                                                                      |
 
 ## Decisões e desafios
 
